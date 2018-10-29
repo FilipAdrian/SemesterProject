@@ -1,4 +1,5 @@
-package com.Adrian.ProjectClasses;
+package com.Adrian.com.entities;
+
 
 public class Manufacture {
     private Long idManufacture;
@@ -27,5 +28,21 @@ public class Manufacture {
 
     public Address getAddressManufacture() {
         return addressManufacture;
+    }
+
+    public void setIdManufacture(Long idManufacture) {
+        this.idManufacture = idManufacture;
+    }
+
+    public void setNameManufacture(String nameManufacture) {
+        this.nameManufacture = nameManufacture;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setAddressManufacture(Address addressManufacture) {
+        this.addressManufacture = addressManufacture;
     }
 }

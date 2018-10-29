@@ -1,4 +1,4 @@
-package com.Adrian.ProjectClasses;
+package com.Adrian.com.entities;
 
 public enum Warehouse {
     WAREHOUSE1,

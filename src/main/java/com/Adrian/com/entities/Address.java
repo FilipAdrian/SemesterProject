@@ -1,4 +1,4 @@
-package com.Adrian.ProjectClasses;
+package com.Adrian.com.entities;
 
 public class Address {
     private String country;
@@ -10,6 +10,22 @@ public class Address {
         this.country = country;
         this.city = city;
         this.street = street;
+        this.streetNumber = streetNumber;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public void setStreetNumber(Integer streetNumber) {
         this.streetNumber = streetNumber;
     }
 

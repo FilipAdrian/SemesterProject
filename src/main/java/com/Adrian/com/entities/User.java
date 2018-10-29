@@ -1,4 +1,6 @@
-package com.Adrian.ProjectClasses;
+package com.Adrian.com.entities;
+
+
 
 public class User {
     private Long idUser;
@@ -6,10 +8,11 @@ public class User {
     private  String userSurname;
     private String phone;
     private String email;
-    private  Address userAddress;
+    private Address userAddress;
     private Type type;
 
-    public User(Long idUser, String userName, String userSurname ,String phone , String email, Address userAddress){
+    public User(Long idUser, String userName, String userSurname
+            ,String phone , String email, Address userAddress){
         this.idUser = idUser;
         this.userName = userName;
         this.userSurname = userSurname;
@@ -17,6 +20,30 @@ public class User {
         this.email = email;
         this.userAddress = userAddress;
 
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setUserSurname(String userSurname) {
+        this.userSurname = userSurname;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setUserAddress(Address userAddress) {
+        this.userAddress = userAddress;
     }
 
     public void setType(Type type){

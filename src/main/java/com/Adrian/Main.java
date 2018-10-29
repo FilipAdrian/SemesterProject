@@ -1,4 +1,4 @@
 package com.Adrian;
 
-public class MAIN {
+public class Main {
 }

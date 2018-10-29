@@ -1,4 +1,5 @@
-package com.Adrian.ProjectClasses;
+package com.Adrian.com.entities;
+
 
 public class Product {
    private String idProduct;
@@ -7,10 +8,10 @@ public class Product {
    private  Float priceProduct;
    private  Float costProduct;
    private  Integer quantity;
-   private Warehouse warehouseLocation;
+   private String warehouseLocation;
 
    public Product (String idProduct,String nameProduct, Manufacture manufacture , Float priceProduct,
-                    Float costProduct , Integer quantity , Warehouse warehouseLocation){
+                    Float costProduct , Integer quantity , String warehouseLocation){
        this.idProduct = idProduct;
        this.nameProduct = nameProduct;
        this.manufacture = manufacture;
@@ -44,8 +45,35 @@ public class Product {
        return  this.quantity;
    }
 
-   public Warehouse getWarehouseLocation(){
+   public String getWarehouseLocation(){
        return this.warehouseLocation;
    }
 
+    public void setIdProduct(String idProduct) {
+        this.idProduct = idProduct;
+    }
+
+    public void setNameProduct(String nameProduct) {
+        this.nameProduct = nameProduct;
+    }
+
+    public void setManufacture(Manufacture manufacture) {
+        this.manufacture = manufacture;
+    }
+
+    public void setPriceProduct(Float priceProduct) {
+        this.priceProduct = priceProduct;
+    }
+
+    public void setCostProduct(Float costProduct) {
+        this.costProduct = costProduct;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setWarehouseLocation(String warehouseLocation) {
+        this.warehouseLocation = warehouseLocation;
+    }
 }
