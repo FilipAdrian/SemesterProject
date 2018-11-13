@@ -1,40 +1,32 @@
-package sample;
+package com.walle.UI.sample;
 
 
+import com.walle.UI.model.Table;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import model.Table;
 
 public class Controller implements Initializable {
     //Define Table
     @FXML
     TableView<Table> tableID;
     @FXML
-    TableColumn<Table, Integer> iID;
+    TableColumn <Object, Object> iID;
     @FXML
-    TableColumn<Table, String> iName;
+    TableColumn <Object, Object> iName;
     @FXML
-    TableColumn<Table, String> iDate;
+    TableColumn <Object, Object> iDate;
     @FXML
-    TableColumn<Table, Integer> iPrice;
+    TableColumn <Object, Object> iPrice;
     //Define Variables
     private int iNumber=1;
     //Create table data
@@ -46,7 +38,7 @@ public class Controller implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         iID.setCellValueFactory(new PropertyValueFactory<>("rID"));
-        iName.setCellValueFactory(new PropertyValueFactory<>("rName"));
+        iName.setCellValueFactory(new PropertyValueFactory<> ("rName"));
         iDate.setCellValueFactory(new PropertyValueFactory<>("rDate"));
         iPrice.setCellValueFactory(new PropertyValueFactory<>("rPrice"));
         tableID.setItems(data);

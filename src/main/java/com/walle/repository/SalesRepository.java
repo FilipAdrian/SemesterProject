@@ -3,6 +3,7 @@ package com.walle.repository;
 import com.walle.entities.Client;
 import com.walle.entities.Product;
 import com.walle.entities.Sales;
+import com.walle.entities.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -46,30 +47,33 @@ public class SalesRepository {
 
     public Integer insert(Sales sales) throws Exception {
         Connection connection = ConectorManager.makeConnection ();
-        PreparedStatement stmt = connection.prepareStatement ("INSERT into sales values (?,?,?,?,?) ");
+        PreparedStatement stmt = connection.prepareStatement ("INSERT into sales values (?,?,?,?,?,?) ");
         stmt.setInt (1,sales.getId ());
         SimpleDateFormat sdf = new SimpleDateFormat ("yyyy-MM-dd");
         Date date = sdf.parse (sales.getData ());
         java.sql.Date sqlData = new java.sql.Date (date.getTime ( ));
         stmt.setDate (2,sqlData);
+        stmt.setInt (4,sales.getUser ().getId ());
         stmt.setInt (3,sales.getProductQuantity ());
-        stmt.setString (4,sales.getProduct ().getId ());
-        stmt.setInt (5,sales.getClient ().getId ());
+        stmt.setString (5,sales.getProduct ().getId ());
+        stmt.setInt (6,sales.getClient ().getId ());
+
         return executeQuery (stmt);
     }
 
     public Integer update(Sales sales) throws Exception{
         Connection connection = ConectorManager.makeConnection ();
-        PreparedStatement stmt = connection.prepareStatement ("update sales set data = ? , quantity = ?,id_product = ?, id_client = ? " +
+        PreparedStatement stmt = connection.prepareStatement ("update sales set data = ? , quantity = ?,id_user = ?,id_product = ?, id_client = ?" +
                 "where id = ?");
         SimpleDateFormat sdf = new SimpleDateFormat ("yyyy-MM-dd");
         Date date = sdf.parse (sales.getData ());
         java.sql.Date sqlData = new java.sql.Date (date.getTime ( ));
         stmt.setDate (1,sqlData);
         stmt.setInt (2,sales.getProductQuantity ());
-        stmt.setString (3,sales.getProduct ().getId ());
-        stmt.setInt (4,sales.getClient ().getId ());
-        stmt.setInt (5,sales.getId ());
+        stmt.setInt (3,sales.getUser ().getId ());
+        stmt.setString (4,sales.getProduct ().getId ());
+        stmt.setInt (5,sales.getClient ().getId ());
+        stmt.setInt (6,sales.getId ());
 
         return executeQuery (stmt);
     }
@@ -84,12 +88,14 @@ public class SalesRepository {
 
     private Sales extractSales(ResultSet rs) throws Exception {
         ClientRepository clientRepository = new ClientRepository ();
-        Client client = clientRepository.getById (rs.getInt (5));
+        Client client = clientRepository.getById (rs.getInt (6));
         ProductRepository productRepository = new ProductRepository ();
-        Product product = productRepository.getByID (rs.getString (4));
+        Product product = productRepository.getByID (rs.getString (5));
+        UserRepository userRepository = new UserRepository ();
+        User user = userRepository.getById (rs.getInt (4));
         SimpleDateFormat sdf = new SimpleDateFormat ("yyyy-MM-dd");
         String data = sdf.format (rs.getDate (2));
-        Sales sales = new Sales (rs.getInt (1),data,rs.getInt (3),product,client);
+        Sales sales = new Sales (rs.getInt (1),data,rs.getInt (3),user,product,client);
         return sales;
     }
 

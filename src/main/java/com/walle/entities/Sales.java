@@ -8,15 +8,19 @@ public class Sales {
     private Integer productQuantity;
     private Client client;
     private Product product;
+    private User user;
 
     public  Sales() {};
 
-    public Sales(Integer id, String data, Integer productQuantity, Product product ,Client client) {
+
+
+    public Sales(Integer id, String data, Integer productQuantity, User user, Product product , Client client) {
         this.id= id;
         this.data = data;
         this.productQuantity = productQuantity;
         this.client = client;
         this.product = product;
+        this.user = user;
     }
 
     public void setId(Integer id) {
@@ -59,14 +63,23 @@ public class Sales {
         return product;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
     @Override
     public String toString() {
         return "Sales{" +
                 "id=" + id +
-                ", data=" + data +
+                ", data='" + data + '\'' +
                 ", productQuantity=" + productQuantity +
-                ", client=" + client +
-                ", product=" + product +
+                ", client=" + client.getId () +
+                ", product=" + product.getId () +
+                ", user=" + user.getId () +
                 '}';
     }
 }

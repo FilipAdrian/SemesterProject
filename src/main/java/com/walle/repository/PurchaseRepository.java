@@ -1,8 +1,6 @@
 package com.walle.repository;
 
-import com.walle.entities.Client;
-import com.walle.entities.Product;
-import com.walle.entities.Purchase;
+import com.walle.entities.*;
 
 
 import java.sql.Connection;
@@ -49,21 +47,23 @@ public class PurchaseRepository {
 
     public Integer insert(Purchase purchase) throws Exception {
         Connection connection = ConectorManager.makeConnection ();
-        PreparedStatement stmt = connection.prepareStatement ("INSERT into purchase values (?,?,?,?,?) ");
+        PreparedStatement stmt = connection.prepareStatement ("INSERT into purchase values (?,?,?,?,?,?) ");
         stmt.setInt (1,purchase.getId ());
         SimpleDateFormat sdf = new SimpleDateFormat ("yyyy-MM-dd");
         Date date = sdf.parse (purchase.getData ());
         java.sql.Date sqlData = new java.sql.Date (date.getTime ( ));
         stmt.setDate (2,sqlData);
+        stmt.setInt (6,purchase.getUser ().getId ());
         stmt.setInt (3,purchase.getProductQuantity ());
         stmt.setString (4,purchase.getProduct ().getId ());
         stmt.setInt (5,purchase.getClient ().getId ());
+
         return executeQuery (stmt);
     }
 
     public Integer update(Purchase purchase) throws Exception{
         Connection connection = ConectorManager.makeConnection ();
-        PreparedStatement stmt = connection.prepareStatement ("update purchase set data = ? , quantity = ?,id_product = ?, id_client = ? " +
+        PreparedStatement stmt = connection.prepareStatement ("update purchase set data = ? , quantity = ?,id_product = ?, id_client = ?,id_user = ?" +
                 "where id = ?");
         SimpleDateFormat sdf = new SimpleDateFormat ("yyyy-MM-dd");
         Date date = sdf.parse (purchase.getData ());
@@ -72,7 +72,8 @@ public class PurchaseRepository {
         stmt.setInt (2,purchase.getProductQuantity ());
         stmt.setString (3,purchase.getProduct ().getId ());
         stmt.setInt (4,purchase.getClient ().getId ());
-        stmt.setInt (5,purchase.getId ());
+        stmt.setInt (5,purchase.getUser ().getId ());
+        stmt.setInt (6,purchase.getId ());
 
         return executeQuery (stmt);
     }
@@ -90,9 +91,11 @@ public class PurchaseRepository {
         Client client = clientRepository.getById (rs.getInt (5));
         ProductRepository productRepository = new ProductRepository ();
         Product product = productRepository.getByID (rs.getString (4));
+        UserRepository userRepository = new UserRepository ();
+        User user = userRepository.getById (rs.getInt (6));
         SimpleDateFormat sdf = new SimpleDateFormat ("yyyy-MM-dd");
         String data = sdf.format (rs.getDate (2));
-        Purchase purchase = new Purchase (rs.getInt (1),data,rs.getInt (3),product,client);
+        Purchase purchase = new Purchase (rs.getInt (1),data,rs.getInt (3),user,product,client);
         return purchase;
     }
 

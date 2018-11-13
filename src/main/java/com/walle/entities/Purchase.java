@@ -7,15 +7,17 @@ public class Purchase {
     private Integer productQuantity;
     private Client client;
     private Product product;
+    private  User user;
 
     public Purchase() {};
 
-    public Purchase(Integer id, String data, Integer productQuantity, Product product, Client client) {
+    public Purchase(Integer id, String data, Integer productQuantity, User user, Product product, Client client) {
         this.id= id;
         this.data = data;
         this.productQuantity = productQuantity;
         this.client = client;
         this.product = product;
+        this.user = user;
     }
 
     public void setId(Integer id) {
@@ -58,14 +60,23 @@ public class Purchase {
         return product;
     }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
     @Override
     public String toString() {
         return "Purchase{" +
                 "id=" + id +
-                ", data=" + data +
+                ", data='" + data + '\'' +
                 ", productQuantity=" + productQuantity +
                 ", client=" + client.getId () +
                 ", product=" + product.getId () +
+                ", user=" + user.getId () +
                 '}';
     }
 }
