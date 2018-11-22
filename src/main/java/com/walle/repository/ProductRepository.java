@@ -26,17 +26,20 @@ public class ProductRepository {
     }
 
     public List <Product> getAll() throws Exception {
+         long start= System.currentTimeMillis ();
         Connection connection = ConectorManager.makeConnection ( );
-        Product product = null;
-        ArrayList <Product> products = new ArrayList <Product> ( );
-        PreparedStatement stmt = connection.prepareStatement ("SELECT * from product");
+        ArrayList <Product> products = new ArrayList <> ( );
+        PreparedStatement stmt = connection.prepareStatement ("SELECT * from product ");
         ResultSet rs = stmt.executeQuery ( );
         while (rs.next ()) {
-            product = extractProduct (rs);
+            Product product = extractProduct (rs);
             products.add (product);
         }
         stmt.close ();
         connection.close ();
+        long finish = System.currentTimeMillis ();
+        long timeElapsed = finish - start;
+        System.out.println ("Time taken is : " + timeElapsed );
 
         return products;
     }
@@ -51,9 +54,9 @@ public class ProductRepository {
         stmt.setBigDecimal (4, price);
         BigDecimal cost = new BigDecimal (product.getCost ( ));
         stmt.setBigDecimal (5, cost);
-        Integer idManufacture = product.getManufacture ( ).getId ( );
+        Integer idManufacture = product.getManufacture ( );
         stmt.setInt (6, idManufacture);
-        Integer idWarehouse = product.getWarehouse ().getId ();
+        Integer idWarehouse = product.getWarehouse ();
         stmt.setInt (7,idWarehouse);
 
         return executeQuery (stmt);
@@ -69,9 +72,9 @@ public class ProductRepository {
         stmt.setBigDecimal (3, price);
         BigDecimal cost = new BigDecimal (product.getCost ( ));
         stmt.setBigDecimal (4, cost);
-        Integer idManufacture = product.getManufacture ( ).getId ( );
+        Integer idManufacture = product.getManufacture ( );
         stmt.setInt (5, idManufacture);
-        Integer idWarehouse = product.getWarehouse ().getId ();
+        Integer idWarehouse = product.getWarehouse ();
         stmt.setInt (6,idWarehouse);
         stmt.setString (7, product.getId ( ));
 
@@ -95,13 +98,10 @@ public class ProductRepository {
     }
 
     private Product extractProduct(ResultSet rs) throws Exception {
-        Integer idManufacture = rs.getInt (6);
-        Integer idWarehouse = rs.getInt (7);
-        ManufactureRepository manufactureRepository = new ManufactureRepository ();
-        WarehouseRepository warehouseRepository = new WarehouseRepository ();
+
+
         Product product = new Product (rs.getString (1), rs.getString (2), rs.getInt (3),
-                rs.getDouble (4), rs.getDouble (5),
-                manufactureRepository.getById (idManufacture), warehouseRepository.getById (idWarehouse));
+                rs.getDouble (4), rs.getDouble (5),rs.getInt (6),rs.getInt (7) );
 
         return product;
     }

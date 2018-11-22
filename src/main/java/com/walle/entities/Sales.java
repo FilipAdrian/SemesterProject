@@ -6,21 +6,21 @@ public class Sales {
     private Integer id;
     private String data;
     private Integer productQuantity;
-    private Client client;
-    private Product product;
-    private User user;
+    private Integer idClient;
+    private String idProduct;
+    private Integer idUser;
 
     public  Sales() {};
 
 
 
-    public Sales(Integer id, String data, Integer productQuantity, User user, Product product , Client client) {
+    public Sales(Integer id, String data, Integer productQuantity, Integer idUser, String idProduct , Integer idClient) {
         this.id= id;
         this.data = data;
         this.productQuantity = productQuantity;
-        this.client = client;
-        this.product = product;
-        this.user = user;
+        this.idClient = idClient;
+        this.idProduct = idProduct;
+        this.idUser = idUser;
     }
 
     public void setId(Integer id) {
@@ -35,12 +35,12 @@ public class Sales {
         this.productQuantity = productQuantity;
     }
 
-    public void setClient(Client client) {
-        this.client = client;
+    public void setClient(Integer idClient) {
+        this.idClient = idClient;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setProduct(String idProduct) {
+        this.idProduct = idProduct;
     }
 
     public Integer getId() {
@@ -55,20 +55,20 @@ public class Sales {
         return productQuantity;
     }
 
-    public Client getClient() {
-        return client;
+    public Integer getClient() {
+        return idClient;
     }
 
-    public Product getProduct() {
-        return product;
+    public String getProduct() {
+        return idProduct;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUser(Integer idUser) {
+        this.idUser = idUser;
     }
 
-    public User getUser() {
-        return user;
+    public Integer getUser() {
+        return idUser;
     }
 
     @Override
@@ -77,9 +77,9 @@ public class Sales {
                 "id=" + id +
                 ", data='" + data + '\'' +
                 ", productQuantity=" + productQuantity +
-                ", client=" + client.getId () +
-                ", product=" + product.getId () +
-                ", user=" + user.getId () +
+                ", idClient=" + idClient+
+                ", idProduct=" + idProduct+
+                ", idUser=" + idUser +
                 '}';
     }
 }

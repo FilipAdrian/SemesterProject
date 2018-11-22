@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="672.0" prefWidth="1061.0" style="-fx-background-color: #d2eff9;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <StackPane layoutX="315.0" layoutY="149.0" prefHeight="125.0" prefWidth="203.0" style="-fx-background-color: #d2eff9;">
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="User:" wrappingWidth="169.767578125">
+               <font>
+                  <Font size="53.0" />
+               </font>
+            </Text>
+         </children>
+      </StackPane>
+      <StackPane layoutX="332.0" layoutY="336.0" prefHeight="75.0" prefWidth="155.0" style="-fx-background-color: #d2eff9;">
+         <children>
+            <Text fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" text="Access:" wrappingWidth="204.2060546875">
+               <font>
+                  <Font size="52.0" />
+               </font>
+            </Text>
+         </children>
+      </StackPane>
+      <StackPane layoutX="557.0" layoutY="152.0" prefHeight="125.0" prefWidth="233.0" style="-fx-background-color: #d2eff9;">
+         <children>
+            <TextField prefHeight="43.0" prefWidth="216.0" />
+         </children>
+      </StackPane>
+      <StackPane layoutX="557.0" layoutY="343.0" prefHeight="62.0" prefWidth="233.0" style="-fx-background-color: #d2eff9;">
+         <children>
+            <TextField prefHeight="48.0" prefWidth="233.0" />
+         </children>
+      </StackPane>
+      <Text fill="WHITE" layoutX="380.0" layoutY="121.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome" textAlignment="JUSTIFY" wrappingWidth="301.11376953125">
+         <font>
+            <Font size="64.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

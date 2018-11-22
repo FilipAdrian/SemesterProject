@@ -3,13 +3,13 @@ package com.walle.entities;
 public class Warehouse {
     private Integer id;
     private String name;
-    private Country country;
+    private Integer country;
     private String address;
     private String phone;
 
     public  Warehouse () {}
 
-  public Warehouse(Integer id, String name ,Country country,
+  public Warehouse(Integer id, String name ,Integer  country,
               String address,String phone){
         this.id = id;
         this.name = name;
@@ -26,7 +26,7 @@ public class Warehouse {
         return name;
     }
 
-    public Country getCountry() {
+    public Integer  getCountry() {
         return country;
     }
 
@@ -46,7 +46,7 @@ public class Warehouse {
         this.name = name;
     }
 
-    public void setCountry(Country country) {
+    public void setCountry(Integer  country) {
         this.country = country;
     }
 
@@ -63,7 +63,7 @@ public class Warehouse {
         return "Warehouse{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", country=" + country.getId () +
+                ", country=" + country +
                 ", address='" + address + '\'' +
                 ", phone='" + phone + '\'' +
                 '}';

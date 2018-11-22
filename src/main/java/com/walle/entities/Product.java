@@ -7,18 +7,18 @@ public class Product {
     private Integer quantity;
     private Double price;
     private Double cost;
-    private Manufacture manufacture;
-    private Warehouse warehouse;
+    private Integer idManufacture;
+    private Integer idWarehouse;
 
     public Product(String id, String name, Integer quantity,Double price,
-                   Double cost,  Manufacture manufacture, Warehouse warehouse) {
+                   Double cost,  Integer idManufacture, Integer idWarehouse) {
         this.id = id;
         this.name = name;
-        this.manufacture = manufacture;
+        this.idManufacture = idManufacture;
         this.price = price;
         this.cost = cost;
         this.quantity = quantity;
-        this.warehouse = warehouse;
+        this.idWarehouse = idWarehouse;
     }
 
     public Product() {
@@ -34,8 +34,8 @@ public class Product {
         return name;
     }
 
-    public Manufacture getManufacture() {
-        return manufacture;
+    public Integer getManufacture() {
+        return idManufacture;
     }
 
     public Double getPrice() {
@@ -50,8 +50,8 @@ public class Product {
         return quantity;
     }
 
-    public Warehouse getWarehouse() {
-        return warehouse;
+    public Integer getWarehouse() {
+        return idWarehouse;
     }
 
     public void setId(String id) {
@@ -62,8 +62,8 @@ public class Product {
         this.name = name;
     }
 
-    public void setManufacture(Manufacture manufacture) {
-        this.manufacture = manufacture;
+    public void setManufacture(Integer idManufacture) {
+        this.idManufacture = idManufacture;
     }
 
     public void setPrice(Double price) {
@@ -78,8 +78,8 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public void setWarehouse(Warehouse warehouse) {
-        this.warehouse = warehouse;
+    public void setWarehouse(Integer idWarehouse) {
+        this.idWarehouse = idWarehouse;
     }
 
     @Override
@@ -87,11 +87,11 @@ public class Product {
         return "Product{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", manufacture=" + manufacture.getId () +
+                ", idManufacture=" + idManufacture +
                 ", price=" + price +
                 ", cost=" + cost +
                 ", quantity=" + quantity +
-                ", warehouse='" + warehouse.getId () + '\'' +
+                ", idWarehouse='" + idWarehouse + '\'' +
                 '}';
     }
 }

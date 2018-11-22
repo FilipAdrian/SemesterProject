@@ -48,9 +48,9 @@ public class ClientRepository {
         stmt.setString (3,client.getSurname ());
         stmt.setString (4,client.getPhone ());
         stmt.setString (5,client.getEmail ());
-        stmt.setInt (6,client.getCountry ().getId ());
+        stmt.setInt (6,client.getCountry ());
         stmt.setString (7,client.getAddress ());
-        stmt.setInt (8,client.getType ().getId ());
+        stmt.setInt (8,client.getType ());
 
         return executeQuery (stmt);
     }
@@ -64,9 +64,9 @@ public class ClientRepository {
         stmt.setString (2,client.getSurname ());
         stmt.setString (3,client.getPhone ());
         stmt.setString (4,client.getEmail ());
-        stmt.setInt (5,client.getCountry ().getId ());
+        stmt.setInt (5,client.getCountry ());
         stmt.setString (6,client.getAddress ());
-        stmt.setInt (7,client.getType ().getId ());
+        stmt.setInt (7,client.getType ());
         stmt.setInt (8,client.getId ());
 
         return executeQuery (stmt);
@@ -80,10 +80,9 @@ public class ClientRepository {
         return executeQuery (stmt);
     }
     private Client extractClient(ResultSet rs) throws Exception{
-        Integer idCountry = rs.getInt (6);
-        CountryRepository countryRepository = new CountryRepository ();
+
         Client client = new Client (rs.getInt (1),rs.getString (2),rs.getString (3),
-                rs.getString (4),rs.getString (5),countryRepository.getById (idCountry),
+                rs.getString (4),rs.getString (5),rs.getInt (6),
                 rs.getString (7));
 
         return  client;

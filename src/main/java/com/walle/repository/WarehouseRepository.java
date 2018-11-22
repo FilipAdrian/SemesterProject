@@ -46,7 +46,7 @@ public class WarehouseRepository  {
         PreparedStatement stmt = connection.prepareStatement ("INSERT  into warehouse values (?,?,?,?,?)");
         stmt.setInt (1,warehouse.getId ());
         stmt.setString (2,warehouse.getName ());
-        stmt.setInt (3,warehouse.getCountry ().getId ());
+        stmt.setInt (3,warehouse.getCountry ());
         stmt.setString (4,warehouse.getAddress ());
         stmt.setString (5,warehouse.getPhone ());
 
@@ -58,7 +58,7 @@ public class WarehouseRepository  {
         PreparedStatement stmt =connection.prepareStatement ("UPDATE warehouse set name = ?, id_country = ? ," +
                 " address = ?, phone = ? where  id = ?");
         stmt.setString (1,warehouse.getName ());
-        stmt.setInt (2,warehouse.getCountry ().getId ());
+        stmt.setInt (2,warehouse.getCountry ());
         stmt.setString (3,warehouse.getAddress ());
         stmt.setString (4,warehouse.getPhone ());
         stmt.setInt (5,warehouse.getId ());
@@ -76,10 +76,9 @@ public class WarehouseRepository  {
     }
 
     private Warehouse extractWarehouse (ResultSet rs) throws Exception{
-        Integer idCountry = rs.getInt (3);
-        CountryRepository countryRepository =new CountryRepository ();
         Warehouse warehouse = new Warehouse (rs.getInt (1),rs.getString (2),
-                countryRepository.getById (idCountry),rs.getString (4),rs.getString (5));
+                rs.getInt (3),rs.getString (4),rs.getString (5));
+
         return  warehouse;
     }
 

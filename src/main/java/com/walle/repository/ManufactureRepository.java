@@ -78,8 +78,7 @@ public class ManufactureRepository {
         PreparedStatement stmt = connection.prepareStatement ("UPDATE manufacture set name = ?,id_country = ?,address = ?" +
                 "where id = ?");
         stmt.setString (1,manufacture.getName ());
-        Integer idCountry = manufacture.getCountry ().getId ();
-        stmt.setInt (2,idCountry);
+        stmt.setInt (2, manufacture.getCountry ());
         stmt.setString (3,manufacture.getAddress ());
         stmt.setInt (4,manufacture.getId ());
 
@@ -92,8 +91,7 @@ public class ManufactureRepository {
         PreparedStatement stmt = connection.prepareStatement ("Insert into manufacture values (?,?,?,?)");
         stmt.setInt (1,manufacture.getId ());
         stmt.setString (2,manufacture.getName ());
-        Integer idCountry = manufacture.getCountry().getId ();
-        stmt.setInt (3, idCountry);
+        stmt.setInt (3, manufacture.getCountry());
         stmt.setString (4,manufacture.getAddress ());
 
         return executeQuery (stmt);
@@ -101,10 +99,8 @@ public class ManufactureRepository {
     }
 
     private Manufacture extractManufacture(ResultSet rs) throws Exception{
-        Manufacture manufacture = null;
-        CountryRepository countryRepository = new CountryRepository ();
-        Integer id=rs.getInt (3);
-        manufacture = new Manufacture (rs.getInt (1),rs.getString (2),countryRepository.getById (id),rs.getString (4));
+        Manufacture manufacture = new Manufacture (rs.getInt (1),rs.getString (2),
+                rs.getInt (3),rs.getString (4));
 
         return manufacture;
 

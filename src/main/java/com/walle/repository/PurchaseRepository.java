@@ -53,10 +53,10 @@ public class PurchaseRepository {
         Date date = sdf.parse (purchase.getData ());
         java.sql.Date sqlData = new java.sql.Date (date.getTime ( ));
         stmt.setDate (2,sqlData);
-        stmt.setInt (6,purchase.getUser ().getId ());
+        stmt.setInt (6,purchase.getUser ());
         stmt.setInt (3,purchase.getProductQuantity ());
-        stmt.setString (4,purchase.getProduct ().getId ());
-        stmt.setInt (5,purchase.getClient ().getId ());
+        stmt.setString (4,purchase.getProduct ());
+        stmt.setInt (5,purchase.getClient ());
 
         return executeQuery (stmt);
     }
@@ -70,9 +70,9 @@ public class PurchaseRepository {
         java.sql.Date sqlData = new java.sql.Date (date.getTime ( ));
         stmt.setDate (1,sqlData);
         stmt.setInt (2,purchase.getProductQuantity ());
-        stmt.setString (3,purchase.getProduct ().getId ());
-        stmt.setInt (4,purchase.getClient ().getId ());
-        stmt.setInt (5,purchase.getUser ().getId ());
+        stmt.setString (3,purchase.getProduct ());
+        stmt.setInt (4,purchase.getClient ());
+        stmt.setInt (5,purchase.getUser ());
         stmt.setInt (6,purchase.getId ());
 
         return executeQuery (stmt);
@@ -87,15 +87,12 @@ public class PurchaseRepository {
 
 
     private Purchase extractPurchase(ResultSet rs) throws Exception {
-        ClientRepository clientRepository = new ClientRepository ();
-        Client client = clientRepository.getById (rs.getInt (5));
-        ProductRepository productRepository = new ProductRepository ();
-        Product product = productRepository.getByID (rs.getString (4));
-        UserRepository userRepository = new UserRepository ();
-        User user = userRepository.getById (rs.getInt (6));
+
         SimpleDateFormat sdf = new SimpleDateFormat ("yyyy-MM-dd");
         String data = sdf.format (rs.getDate (2));
-        Purchase purchase = new Purchase (rs.getInt (1),data,rs.getInt (3),user,product,client);
+        Purchase purchase = new Purchase (rs.getInt (1),data,rs.getInt (3)
+                ,rs.getString (4),rs.getInt (5),rs.getInt (6));
+
         return purchase;
     }
 

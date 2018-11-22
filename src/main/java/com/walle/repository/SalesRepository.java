@@ -53,10 +53,10 @@ public class SalesRepository {
         Date date = sdf.parse (sales.getData ());
         java.sql.Date sqlData = new java.sql.Date (date.getTime ( ));
         stmt.setDate (2,sqlData);
-        stmt.setInt (4,sales.getUser ().getId ());
+        stmt.setInt (4,sales.getUser ());
         stmt.setInt (3,sales.getProductQuantity ());
-        stmt.setString (5,sales.getProduct ().getId ());
-        stmt.setInt (6,sales.getClient ().getId ());
+        stmt.setString (5,sales.getProduct ());
+        stmt.setInt (6,sales.getClient ());
 
         return executeQuery (stmt);
     }
@@ -70,9 +70,9 @@ public class SalesRepository {
         java.sql.Date sqlData = new java.sql.Date (date.getTime ( ));
         stmt.setDate (1,sqlData);
         stmt.setInt (2,sales.getProductQuantity ());
-        stmt.setInt (3,sales.getUser ().getId ());
-        stmt.setString (4,sales.getProduct ().getId ());
-        stmt.setInt (5,sales.getClient ().getId ());
+        stmt.setInt (3,sales.getUser ());
+        stmt.setString (4,sales.getProduct ());
+        stmt.setInt (5,sales.getClient ());
         stmt.setInt (6,sales.getId ());
 
         return executeQuery (stmt);
@@ -87,15 +87,10 @@ public class SalesRepository {
 
 
     private Sales extractSales(ResultSet rs) throws Exception {
-        ClientRepository clientRepository = new ClientRepository ();
-        Client client = clientRepository.getById (rs.getInt (6));
-        ProductRepository productRepository = new ProductRepository ();
-        Product product = productRepository.getByID (rs.getString (5));
-        UserRepository userRepository = new UserRepository ();
-        User user = userRepository.getById (rs.getInt (4));
         SimpleDateFormat sdf = new SimpleDateFormat ("yyyy-MM-dd");
         String data = sdf.format (rs.getDate (2));
-        Sales sales = new Sales (rs.getInt (1),data,rs.getInt (3),user,product,client);
+        Sales sales = new Sales (rs.getInt (1),data,rs.getInt (3),
+                rs.getInt (4),rs.getString (5),rs.getInt (6));
         return sales;
     }
 

@@ -1,10 +1,11 @@
 package com.walle.UI.model;
+
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.util.List;
 
-public class Table  {
+public class UserTable {
     private final SimpleIntegerProperty rID;
     private final SimpleStringProperty rName;
     private final SimpleStringProperty rSurname;
@@ -16,8 +17,8 @@ public class Table  {
 
 
 
-    public Table(int sID, String sName, String sSurname, String sPhone
-            ,String sEmail,Integer sCountry,String sAddress,Integer sRole){
+    public UserTable(int sID, String sName, String sSurname, String sPhone
+            , String sEmail, Integer sCountry, String sAddress, Integer sRole){
         this.rID = new SimpleIntegerProperty(sID);
         this.rName = new SimpleStringProperty(sName);
         this.rSurname = new SimpleStringProperty (sSurname);
@@ -73,7 +74,9 @@ public class Table  {
         return rName.get ( );
     }
 
-    public SimpleStringProperty rNameProperty() { return rName; }
+    public SimpleStringProperty rNameProperty() {
+        return rName;
+    }
 
     public String getrSurname() {
         return rSurname.get ( );

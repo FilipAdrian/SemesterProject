@@ -3,12 +3,12 @@ package com.walle.entities;
 public class User extends Client {
     private String password;
     private String login;
-    private Role role;
+    private Integer role;
 
     public User() {};
 
     public User(Integer idUser, String name, String surname,
-                 String phone, String email, Country country ,String address) {
+                 String phone, String email, Integer country ,String address) {
         super (idUser, name, surname, phone, email, country , address);
     }
 
@@ -30,11 +30,11 @@ public class User extends Client {
         this.password = password;
     }
 
-    public void setRole(Role role) {
+    public void setRole(Integer role) {
         this.role = role;
     }
 
-    public Role getRole() {
+    public Integer getRole() {
         return this.role;
     }
 

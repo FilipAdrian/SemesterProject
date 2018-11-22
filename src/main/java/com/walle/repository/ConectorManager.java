@@ -9,11 +9,9 @@ public class ConectorManager {
 
             public static Connection makeConnection(){
                 Connection myConnection = null;
+
                 try{
-
                     myConnection = DriverManager.getConnection (url, userName, password);
-
-
                 }
                 catch (SQLException ex){
                     System.out.println (ex.getMessage () );
@@ -23,7 +21,6 @@ public class ConectorManager {
                 }
 
                 return myConnection;
-
 
             }
 }

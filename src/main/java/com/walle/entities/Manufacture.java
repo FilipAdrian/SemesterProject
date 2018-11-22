@@ -4,15 +4,15 @@ package com.walle.entities;
 public class Manufacture {
     private Integer id;
     private String name;
-    private Country country;
+    private Integer idCountry;
     private String address;
 
     public  Manufacture(){};
 
-    public Manufacture(Integer id, String name, Country country, String address){
+    public Manufacture(Integer id, String name, Integer idCountry, String address){
         this.id = id;
         this.name = name;
-        this.country = country;
+        this.idCountry = idCountry;
         this.address = address;
     }
 
@@ -24,8 +24,8 @@ public class Manufacture {
         return name;
     }
 
-    public  Country getCountry() {
-        return country;
+    public  Integer getCountry() {
+        return idCountry;
     }
 
     public String getAddress() {
@@ -40,8 +40,8 @@ public class Manufacture {
         this.name = name;
     }
 
-    public void setCountry(Country country) {
-        this.country = country;
+    public void setCountry(Integer idCountry) {
+        this.idCountry = idCountry;
     }
 
     public void setAddress(String address) {
@@ -53,7 +53,7 @@ public class Manufacture {
         return "Manufacture{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", country='" + country.getId ()  + '\'' +
+                ", idCountry='" + idCountry  + '\'' +
                 ", address=" + address +
                 '}';
     }

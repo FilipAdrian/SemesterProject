@@ -6,14 +6,14 @@ public class Client {
         private String surname;
         private String phone;
         private String email;
-        private Country country;
+        private Integer country;
         private String address;
-        private Type type;
+        private Integer type;
 
         public  Client(){}
 
         public Client(Integer id, String name, String surname
-                ,String phone , String email, Country country,
+                ,String phone , String email, Integer country,
                     String address ){
             this.id = id;
             this.name = name;
@@ -45,7 +45,7 @@ public class Client {
         }
 
 
-        public void setType(Type type) {
+        public void setType(Integer type) {
             this.type = type;
         }
 
@@ -70,11 +70,11 @@ public class Client {
         }
 
 
-        public Type getType() {
+        public Integer getType() {
             return type;
         }
 
-        public Country getCountry() {
+        public Integer getCountry() {
             return country;
         }
 
@@ -83,7 +83,7 @@ public class Client {
         }
 
 
-        public void setCountry(Country country) {
+        public void setCountry(Integer country) {
             this.country = country;
         }
 

@@ -4,34 +4,22 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Main extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        try{
-            Parent root = FXMLLoader.load(getClass().getClassLoader ().getResource("uiscene2.fxml"));
-            Scene scene =new Scene(root);
-            primaryStage.setScene(scene);
-            primaryStage.setTitle("Wally");
-            primaryStage.show();
-
-        } catch (NullPointerException e){
-            System.out.println ("Ceva ii null" );
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE,null, e);
-        }
-
-
+    public void start(Stage primaryStage) throws Exception{
+        Parent root = FXMLLoader.load(getClass().getClassLoader ().getResource("Login.fxml"));
+        primaryStage.setTitle("Login");
+        primaryStage.setScene(new Scene(root, 800, 387));
+        primaryStage.show ();
 
     }
 
-
     public static void main(String[] args) {
-
         launch(args);
     }
 }

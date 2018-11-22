@@ -51,11 +51,11 @@ public class UserRepository {
         stmt.setString (3,user.getSurname ());
         stmt.setString (4,user.getPhone ());
         stmt.setString (5,user.getEmail ());
-        stmt.setInt (6,user.getCountry ().getId ());
+        stmt.setInt (6,user.getCountry ());
         stmt.setString (7,user.getAddress ());
         stmt.setString (8,user.getLogin ());
         stmt.setString (9,user.getPassword ());
-        stmt.setInt (10,user.getRole ().getId ());
+        stmt.setInt (10,user.getRole ());
 
         return executeQuery (stmt);
     }
@@ -69,11 +69,11 @@ public class UserRepository {
         stmt.setString (2,user.getSurname ());
         stmt.setString (3,user.getPhone ());
         stmt.setString (4,user.getEmail ());
-        stmt.setInt (5,user.getCountry ().getId ());
+        stmt.setInt (5,user.getCountry ());
         stmt.setString (6,user.getAddress ());
         stmt.setString (7,user.getLogin ());
         stmt.setString (8,user.getPassword ());
-        stmt.setInt (9,user.getRole ().getId ());
+        stmt.setInt (9,user.getRole ());
         stmt.setInt (10,user.getId ());
 
 
@@ -87,12 +87,26 @@ public class UserRepository {
 
         return executeQuery (stmt);
     }
+
+    public User checkLoginPassword(String login, String password) throws Exception{
+        Connection connection = ConectorManager.makeConnection ();
+        User user = null;
+        PreparedStatement stmt = connection.prepareStatement ("select * from users where login = ? and password = ?");
+        stmt.setString (1,login);
+        stmt.setString (2,password);
+        ResultSet rs = stmt.executeQuery ();
+        while (rs.next ()){
+            user = extractUser (rs);
+        }
+        return user;
+    }
     private User extractUser(ResultSet rs) throws Exception{
-        Integer idCountry = rs.getInt (6);
-        CountryRepository countryRepository = new CountryRepository ();
         User user = new User (rs.getInt (1),rs.getString (2),rs.getString (3),
-                rs.getString (4),rs.getString (5),countryRepository.getById (idCountry),
+                rs.getString (4),rs.getString (5),rs.getInt (6),
                 rs.getString (7));
+        user.setRole (rs.getInt (10));
+        user.setLogin (rs.getString (8));
+        user.setPassword (rs.getString (9));
 
         return  user;
     }

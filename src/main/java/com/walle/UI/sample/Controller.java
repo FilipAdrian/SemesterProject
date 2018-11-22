@@ -1,54 +1,28 @@
 package com.walle.UI.sample;
 
 
-import com.walle.UI.model.Table;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class Controller implements Initializable {
-    //Define Table
-    @FXML
-    TableView<Table> tableID;
-    @FXML
-    TableColumn <Object, Object> iID;
-    @FXML
-    TableColumn <Object, Object> iName;
-    @FXML
-    TableColumn <Object, Object> iDate;
-    @FXML
-    TableColumn <Object, Object> iPrice;
-    //Define Variables
-    private int iNumber=1;
-    //Create table data
-    private final ObservableList<Table> data= FXCollections.observableArrayList(
-            new Table(iNumber++, "Name 1","08/11/2018",50),
-            new Table(iNumber++, "Name 2", "09/11/2018", 60),
-            new Table(iNumber++, "Name 3", "10/11/2018",100)
-    );
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        iID.setCellValueFactory(new PropertyValueFactory<>("rID"));
-        iName.setCellValueFactory(new PropertyValueFactory<> ("rName"));
-        iDate.setCellValueFactory(new PropertyValueFactory<>("rDate"));
-        iPrice.setCellValueFactory(new PropertyValueFactory<>("rPrice"));
-        tableID.setItems(data);
-    }
+public class Controller implements Initializable{
 
 
     @FXML
     private Button btnOverview;
     @FXML
-    private Button btnStaff;
+    private Button btnUser;
     @FXML
     private Button btnUsers;
     @FXML
@@ -71,7 +45,7 @@ public class Controller implements Initializable {
     @FXML
     private Pane pnlOverview;
     @FXML
-    private Pane pnlStaff;
+    private Pane pnlUser;
     @FXML
     private Pane pnlUsers;
     @FXML
@@ -88,50 +62,98 @@ public class Controller implements Initializable {
     private Pane pnlStatistics;
     @FXML
     private Pane pnlSettings;
+    @FXML
+    private Label nameSurname;
+    @FXML
+    private AnchorPane home;
 
 
+    ProductController productController = new ProductController ( );
+    UserController userController = new UserController ( );
 
 
-    public void handleClicks(ActionEvent actionEvent) {
-        if (actionEvent.getSource() == btnOverview) {
-            pnlOverview.setStyle("-fx-background-color : #61530A");
-            pnlOverview.toFront();
+    public void handleClicks(ActionEvent actionEvent) throws IOException {
+        if (actionEvent.getSource ( ) == btnOverview) {
+//            pnlOverview.setStyle ("-fx-background-color : #61530A");
+            pnlOverview.toFront ( );
         }
-        if (actionEvent.getSource() == btnStaff) {
-            pnlStaff.setStyle("-fx-background-color : #1620A1");
-            pnlStaff.toFront();
+
+        if (actionEvent.getSource ( ) == btnUser) {
+
+            if (userController.flag == 0) {
+                try {
+                    userController.pnUser = userController.loadUser (home, pnlUser);
+                    userController.flag = 1;
+                } catch (Exception e) {
+                    System.out.println (e.getMessage ( ));
+                }
+            } else pnlUser = userController.pnUser;
+            pnlUser.toFront ( );
         }
-        if (actionEvent.getSource() == btnUsers) {
-            pnlUsers.setStyle("-fx-background-color : #53639F");
-            pnlUsers.toFront();
+
+        if (actionEvent.getSource ( ) == btnUsers) {
+//            pnlUsers.setStyle ("-fx-background-color : #53639F");
+            pnlUsers.toFront ( );
         }
-        if(actionEvent.getSource()== btnProducts) {
-            pnlProducts.setStyle("-fx-background-color : #464F67");
-            pnlProducts.toFront();
+        if (actionEvent.getSource ( ) == btnProducts) {
+
+            if (productController.flag == 0) {
+                try {
+
+                    productController.pnStaff = productController.loadProduct (home, pnlProducts);
+                    productController.flag = 1;
+                } catch (Exception e) {
+                    System.out.println (e.getMessage ( ));
+                }
+            } else pnlProducts = productController.pnStaff;
+            pnlProducts.toFront ( );
         }
-        if(actionEvent.getSource()== btnManufactures) {
-            pnlManufactures.setStyle("-fx-background-color : #464F31");
-            pnlManufactures.toFront();
+        if (actionEvent.getSource ( ) == btnManufactures) {
+//            pnlManufactures.setStyle ("-fx-background-color : #464F31");
+            pnlManufactures.toFront ( );
         }
-        if(actionEvent.getSource()== btnWarehouses) {
-            pnlWarehouses.setStyle("-fx-background-color : #429F31");
-            pnlWarehouses.toFront();
+        if (actionEvent.getSource ( ) == btnWarehouses) {
+//            pnlWarehouses.setStyle ("-fx-background-color : #429F31");
+            pnlWarehouses.toFront ( );
         }
-        if(actionEvent.getSource()== btnSales) {
-            pnlSales.setStyle("-fx-background-color : #164F71");
-            pnlSales.toFront();
-        } if(actionEvent.getSource()== btnPurchases)
-        {
-            pnlPurchases.setStyle("-fx-background-color : #604F31");
-            pnlPurchases.toFront();
-        } if(actionEvent.getSource()== btnStatistics)
-        {
-            pnlStatistics.setStyle("-fx-background-color : #224F31");
-            pnlStatistics.toFront();
-        }if(actionEvent.getSource()== btnSettings)
-        {
-            pnlSettings.setStyle("-fx-background-color : #894F31");
-            pnlSettings.toFront();
+        if (actionEvent.getSource ( ) == btnSales) {
+//            pnlSales.setStyle ("-fx-background-color : #164F71");
+            pnlSales.toFront ( );
+        }
+        if (actionEvent.getSource ( ) == btnPurchases) {
+//            pnlPurchases.setStyle ("-fx-background-color : #604F31");
+            pnlPurchases.toFront ( );
+        }
+        if (actionEvent.getSource ( ) == btnStatistics) {
+//            pnlStatistics.setStyle ("-fx-background-color : #224F31");
+            pnlStatistics.toFront ( );
+        }
+        if (actionEvent.getSource ( ) == btnSettings) {
+//            pnlSettings.setStyle ("-fx-background-color : #894F31");
+            pnlSettings.toFront ( );
+        }
+        if (actionEvent.getSource ( ) == btnLogOut) {
+            Stage stage = (Stage) btnManufactures.getScene ( ).getWindow ( );
+            stage.close ( );
+            ControllerLogin controllerLogin = new ControllerLogin ( );
+            controllerLogin.startStage ( );
         }
     }
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        nameSurname.setText (String.valueOf (ControllerLogin.nameSurname));
+        try{
+            UserController userController = new UserController ();
+            userController.initialize (location,resources);
+
+
+        }
+        catch (Exception e){
+            e.getLocalizedMessage ();
+        }
+
+    }
 }
+
