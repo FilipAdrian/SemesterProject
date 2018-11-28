@@ -26,7 +26,7 @@ public class ClientRepository {
 
     public List<Client> getAll() throws  Exception{
         ArrayList<Client> clientArrayList = new ArrayList <Client> ();
-        Client client = new Client ();
+        Client client ;
         Connection connection = ConectorManager.makeConnection ();
         PreparedStatement stmt = connection.prepareStatement ("SELECT * from client");
         ResultSet rs = stmt.executeQuery ();
@@ -70,6 +70,7 @@ public class ClientRepository {
         stmt.setInt (8,client.getId ());
 
         return executeQuery (stmt);
+
     }
 
     public Integer deleteById(Integer id) throws Exception{
@@ -84,6 +85,7 @@ public class ClientRepository {
         Client client = new Client (rs.getInt (1),rs.getString (2),rs.getString (3),
                 rs.getString (4),rs.getString (5),rs.getInt (6),
                 rs.getString (7));
+        client.setType (rs.getInt (8));
 
         return  client;
     }

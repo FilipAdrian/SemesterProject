@@ -1,7 +1,6 @@
 package com.walle.UI.sample;
-
-import com.walle.UI.model.UserTable;
-import com.walle.entities.User;
+import com.walle.UI.model.ClientTable;
+import com.walle.entities.Client;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -18,10 +17,10 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class UserController implements Initializable {
-    //Define Table
+public class ClientViewController implements Initializable {
+
     @FXML
-    TableView <UserTable> tableID;
+    TableView <ClientTable> tableID;
     @FXML
     TableColumn <Object, Object> iID;
     @FXML
@@ -37,26 +36,28 @@ public class UserController implements Initializable {
     @FXML
     TableColumn <Object, Object> iAddress;
     @FXML
-    TableColumn <Object, Object> iRole;
+    TableColumn <Object, Object> iType;
     @FXML
-    public Pane pnUser;
+    public Pane pnlClient;
 
     public Integer flag = 0;
 
-    private com.walle.controllers.UserController userController;
-    private List <User> users;
-    private ObservableList <UserTable> data;
+    private com.walle.controllers.ClientController clientController;
+    private List <Client> clients;
+    private ObservableList <ClientTable> data;
 
-    public UserController() {
+    public ClientViewController() {
     }
 
-    private ObservableList <UserTable> insertData() {
-        ObservableList <UserTable> data = FXCollections.observableArrayList ( );
+    private ObservableList <ClientTable> insertData() {
+        ObservableList <ClientTable> data = FXCollections.observableArrayList ( );
+        System.out.println (clients );
 
-        for (int i = 0; i < users.size ( ); i++) {
+        for (int i = 0; i < clients.size ( ); i++) {
 
-            data.add (new UserTable (users.get (i).getId ( ), users.get (i).getName ( ), users.get (i).getSurname ( ), users.get (i).getPhone ( ),
-                    users.get (i).getEmail ( ), users.get (i).getCountry ( ), users.get (i).getAddress ( ), users.get (i).getRole ( )));
+            data.add (new ClientTable (clients.get (i).getId ( ), clients.get (i).getName ( ), clients.get (i).getSurname ( ), clients.get (i).getPhone ( ),
+                    clients.get (i).getEmail ( ), clients.get (i).getCountry ( ), clients.get (i).getAddress ( ), clients.get (i).getType ( )));
+            System.out.println ( clients.get (i).getType ( ));
         }
         return data;
     }
@@ -71,11 +72,11 @@ public class UserController implements Initializable {
         iEmail.setCellValueFactory (new PropertyValueFactory <> ("rEmail"));
         iCountry.setCellValueFactory (new PropertyValueFactory <> ("rCountry"));
         iAddress.setCellValueFactory (new PropertyValueFactory <> ("rAddress"));
-        iRole.setCellValueFactory (new PropertyValueFactory <> ("rRole"));
+        iType.setCellValueFactory (new PropertyValueFactory <> ("rType"));
 
-        userController = new com.walle.controllers.UserController ( );
+        clientController = new com.walle.controllers.ClientController ();
         try {
-            users = userController.displayUsers ( );
+            clients = clientController.displayClient ( );
         } catch (Exception e) {
             System.out.println (e.getMessage ( ));
         }
@@ -86,12 +87,12 @@ public class UserController implements Initializable {
 
     }
 
-    public Pane loadUser(AnchorPane home, Pane pnlUser) throws IOException {
-        AnchorPane pane = FXMLLoader.load (getClass ( ).getClassLoader ( ).getResource ("user.fxml"));
+    public Pane loadClient(AnchorPane home, Pane pnlClient) throws IOException {
+        AnchorPane pane = FXMLLoader.load (getClass ( ).getClassLoader ( ).getResource ("client.fxml"));
         pane.prefHeightProperty ( ).bind (home.heightProperty ( ));
         pane.prefWidthProperty ( ).bind (home.widthProperty ( ));
-        pnlUser.getChildren ( ).setAll (pane);
-        return pnlUser;
+        pnlClient.getChildren ( ).setAll (pane);
+        return pnlClient;
     }
 
 }

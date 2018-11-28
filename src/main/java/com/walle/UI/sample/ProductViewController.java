@@ -20,9 +20,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-public class ProductController implements Initializable  {
+public class ProductViewController implements Initializable  {
 
-    //Define Table
     @FXML
     TableView <ProductTable> tableID;
     @FXML
@@ -68,14 +67,14 @@ public class ProductController implements Initializable  {
         iManufacture.setCellValueFactory (new PropertyValueFactory <> ("rManufacture"));
         iWarehouse.setCellValueFactory (new PropertyValueFactory <> ("rWarehouse"));
 
-         productController= new com.walle.controllers.ProductController ();
+        productController= new com.walle.controllers.ProductController ();
         try {
             products = productController.displayProducts ( );
         } catch (Exception e) {
             System.out.println (e.getMessage ( ));
         }
 
-            data = insertData ( );
+        data = insertData ( );
         tableID.setItems (data);
     }
 
@@ -87,3 +86,4 @@ public class ProductController implements Initializable  {
         return  pnlProducts;
     }
 }
+

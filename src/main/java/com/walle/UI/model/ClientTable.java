@@ -1,10 +1,12 @@
 package com.walle.UI.model;
+
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 import java.util.List;
 
-public class Table  {
+public class ClientTable {
+
     private final SimpleIntegerProperty rID;
     private final SimpleStringProperty rName;
     private final SimpleStringProperty rSurname;
@@ -12,12 +14,13 @@ public class Table  {
     private final SimpleStringProperty rEmail;
     private final SimpleIntegerProperty rCountry;
     private final SimpleStringProperty rAddress;
-    private final SimpleIntegerProperty rRole;
+    private final SimpleIntegerProperty rType;
 
 
 
-    public Table(int sID, String sName, String sSurname, String sPhone
-            ,String sEmail,Integer sCountry,String sAddress,Integer sRole){
+    public ClientTable(Integer sID, String sName, String sSurname, String sPhone
+            , String sEmail, Integer sCountry, String sAddress, Integer sType){
+
         this.rID = new SimpleIntegerProperty(sID);
         this.rName = new SimpleStringProperty(sName);
         this.rSurname = new SimpleStringProperty (sSurname);
@@ -25,11 +28,11 @@ public class Table  {
         this.rEmail = new SimpleStringProperty (sEmail);
         this.rCountry = new SimpleIntegerProperty (sCountry);
         this.rAddress = new SimpleStringProperty (sAddress);
-        this.rRole = new SimpleIntegerProperty (sRole);
+        this.rType = new SimpleIntegerProperty (sType);
 
     }
 
-    public void setrID(int rID) {
+    public void setrID(Integer rID) {
         this.rID.set (rID);
     }
 
@@ -57,8 +60,8 @@ public class Table  {
         this.rAddress.set (rAddress);
     }
 
-    public void setrRole(int rRole) {
-        this.rRole.set (rRole);
+    public void setrType(int rType) {
+        this.rType.set (rType);
     }
 
     public int getrID() {
@@ -73,7 +76,9 @@ public class Table  {
         return rName.get ( );
     }
 
-    public SimpleStringProperty rNameProperty() { return rName; }
+    public SimpleStringProperty rNameProperty() {
+        return rName;
+    }
 
     public String getrSurname() {
         return rSurname.get ( );
@@ -115,11 +120,11 @@ public class Table  {
         return rAddress;
     }
 
-    public int getrRole() {
-        return rRole.get ( );
+    public int getrType() {
+        return rType.get ( );
     }
 
-    public SimpleIntegerProperty rRoleProperty() {
-        return rRole;
+    public SimpleIntegerProperty rTypeProperty() {
+        return rType;
     }
 }

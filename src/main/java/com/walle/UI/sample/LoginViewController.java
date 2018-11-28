@@ -28,7 +28,7 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class ControllerLogin extends Window implements Initializable {
+public class LoginViewController extends Window implements Initializable {
 
 
     private void showNextScene(String sceneName) {
@@ -83,7 +83,7 @@ public class ControllerLogin extends Window implements Initializable {
 
             if (user != null) {
                 nameSurname.append (user.getSurname ()).append (" ").append (user.getName ());
-                System.out.println (nameSurname);
+//                System.out.println (nameSurname);
                 error.setOpacity (0);
                 showNextScene ("Home.fxml");
                 Stage stage = (Stage) btnLogIn.getScene ( ).getWindow ( );

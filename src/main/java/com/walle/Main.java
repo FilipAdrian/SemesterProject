@@ -14,8 +14,9 @@ import javafx.scene.layout.AnchorPane;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-//        UserController userController = new UserController ();
-//        userController.displayUsers ();
+
+        ClientRepository clientRepository = new ClientRepository ();
+        System.out.println (clientRepository.getAll () );
 //
 //        ProductController productController = new ProductController ();
 //        System.out.println (productController.displayProducts () );
