@@ -10,17 +10,17 @@ public class ProductTable {
     private final SimpleIntegerProperty rQuantity;
     private final SimpleDoubleProperty rPrice;
     private final SimpleDoubleProperty rCost;
-    private final SimpleIntegerProperty rManufacture;
-    private final SimpleIntegerProperty rWarehouse;
+    private final SimpleStringProperty rManufacture;
+    private final SimpleStringProperty rWarehouse;
 
-    public ProductTable (String sID, String sName, Integer sQuantity, Double sPrice, Double sCost, Integer sManufacture, Integer sWarehouse){
+    public ProductTable (String sID, String sName, Integer sQuantity, Double sPrice, Double sCost, String sManufacture, String sWarehouse){
         this.rID = new SimpleStringProperty(sID);
         this.rName = new SimpleStringProperty (sName);
         this.rQuantity= new SimpleIntegerProperty (sQuantity);
         this.rPrice = new SimpleDoubleProperty (sPrice);
         this.rCost = new SimpleDoubleProperty (sCost);
-        this.rManufacture = new SimpleIntegerProperty (sManufacture);
-        this.rWarehouse = new SimpleIntegerProperty (sWarehouse);
+        this.rManufacture = new SimpleStringrProperty (sManufacture);
+        this.rWarehouse = new SimpleStringProperty (sWarehouse);
     }
 
     public void setrID (String rID)  { this.rID.set (rID); }
@@ -28,7 +28,7 @@ public class ProductTable {
     public void setrQuantity (Integer rQuantity) {this.rQuantity.set (rQuantity);}
     public void setrPrice (Double rPrice) {this.rPrice.set (rPrice);}
     public void setrCost (Double rCost) {this.rCost.set (rCost);}
-    public void setrManufacture (Integer rManufacture) {this.rManufacture.set (rManufacture);}
+    public void setrManufacture (String rManufacture) {this.rManufacture.set (rManufacture);}
     public void setrWarehouse (Integer rWarehouse) {this.rWarehouse.set (rWarehouse);}
 
     public String getrID() {
@@ -69,19 +69,19 @@ public class ProductTable {
         return rCost;
     }
 
-    public Integer getrManufacture() {
+    public String getrManufacture() {
         return rManufacture.get ( );
     }
 
-    public SimpleIntegerProperty rManufactureProperty() {
+    public SimpleStringProperty rManufactureProperty() {
         return rManufacture;
     }
 
-    public Integer getrWarehouse() {
+    public String getrWarehouse() {
         return rWarehouse.get ( );
     }
 
-    public SimpleIntegerProperty rWarehouseProperty() {
+    public SimpleStringProperty rWarehouseProperty() {
         return rWarehouse;
     }
 }
