@@ -29,7 +29,7 @@ public class ProductTable {
     public void setrPrice (Double rPrice) {this.rPrice.set (rPrice);}
     public void setrCost (Double rCost) {this.rCost.set (rCost);}
     public void setrManufacture (String rManufacture) {this.rManufacture.set (rManufacture);}
-    public void setrWarehouse (Integer rWarehouse) {this.rWarehouse.set (rWarehouse);}
+    public void setrWarehouse (String rWarehouse) {this.rWarehouse.set (rWarehouse);}
 
     public String getrID() {
         return rID.get ( );
