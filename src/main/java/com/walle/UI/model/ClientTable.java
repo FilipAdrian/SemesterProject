@@ -1,34 +1,29 @@
 package com.walle.UI.model;
 
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-import java.util.List;
 
 public class ClientTable {
 
-    private final SimpleIntegerProperty rID;
-    private final SimpleStringProperty rName;
-    private final SimpleStringProperty rSurname;
+    private final SimpleLongProperty rID;
+    private final SimpleStringProperty rClient;
     private final SimpleStringProperty rPhone;
     private final SimpleStringProperty rEmail;
-    private final SimpleIntegerProperty rCountry;
     private final SimpleStringProperty rAddress;
-    private final SimpleIntegerProperty rType;
+    private final SimpleStringProperty rType;
 
 
 
-    public ClientTable(Integer sID, String sName, String sSurname, String sPhone
-            , String sEmail, Integer sCountry, String sAddress, Integer sType){
+    public ClientTable(Long sID, String sClient, String sPhone
+            , String sEmail, String sAddress, String sType){
 
-        this.rID = new SimpleIntegerProperty(sID);
-        this.rName = new SimpleStringProperty(sName);
-        this.rSurname = new SimpleStringProperty (sSurname);
+        this.rID = new SimpleLongProperty(sID);
+        this.rClient = new SimpleStringProperty(sClient);
         this.rPhone = new SimpleStringProperty (sPhone);
         this.rEmail = new SimpleStringProperty (sEmail);
-        this.rCountry = new SimpleIntegerProperty (sCountry);
         this.rAddress = new SimpleStringProperty (sAddress);
-        this.rType = new SimpleIntegerProperty (sType);
+        this.rType = new SimpleStringProperty (sType);
 
     }
 
@@ -36,12 +31,8 @@ public class ClientTable {
         this.rID.set (rID);
     }
 
-    public void setrName(String rName) {
-        this.rName.set (rName);
-    }
-
-    public void setrSurname(String rSurname) {
-        this.rSurname.set (rSurname);
+    public void setrName(String rClient) {
+        this.rClient.set (rClient);
     }
 
     public void setrPhone(String rPhone) {
@@ -52,40 +43,29 @@ public class ClientTable {
         this.rEmail.set (rEmail);
     }
 
-    public void setrCountry(int rCountry) {
-        this.rCountry.set (rCountry);
-    }
 
     public void setrAddress(String rAddress) {
         this.rAddress.set (rAddress);
     }
 
-    public void setrType(int rType) {
+    public void setrType(String rType) {
         this.rType.set (rType);
     }
 
-    public int getrID() {
+    public Long getrID() {
         return rID.get ( );
     }
 
-    public SimpleIntegerProperty rIDProperty() {
+    public SimpleLongProperty rIDProperty() {
         return rID;
     }
 
-    public String getrName() {
-        return rName.get ( );
+    public String getrClient() {
+        return rClient.get ( );
     }
 
-    public SimpleStringProperty rNameProperty() {
-        return rName;
-    }
-
-    public String getrSurname() {
-        return rSurname.get ( );
-    }
-
-    public SimpleStringProperty rSurnameProperty() {
-        return rSurname;
+    public SimpleStringProperty rClientProperty() {
+        return rClient;
     }
 
     public String getrPhone() {
@@ -104,14 +84,6 @@ public class ClientTable {
         return rEmail;
     }
 
-    public int getrCountry() {
-        return rCountry.get ( );
-    }
-
-    public SimpleIntegerProperty rCountryProperty() {
-        return rCountry;
-    }
-
     public String getrAddress() {
         return rAddress.get ( );
     }
@@ -120,11 +92,15 @@ public class ClientTable {
         return rAddress;
     }
 
-    public int getrType() {
+    public String getrType() {
         return rType.get ( );
     }
 
-    public SimpleIntegerProperty rTypeProperty() {
+    public SimpleStringProperty rTypeProperty() {
         return rType;
+    }
+
+    public void setrClient(String rClient) {
+        this.rClient.set (rClient);
     }
 }

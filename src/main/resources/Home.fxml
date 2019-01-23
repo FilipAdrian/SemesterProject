@@ -40,18 +40,6 @@
                         <Insets left="50.0" />
                     </padding>
                 </Button>
-                <Button fx:id="btnUser" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Users" textFill="#e7e5e5">
-                    <graphic>
-                        <ImageView fitHeight="29.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="@images/staff.png" />
-                            </image>
-                        </ImageView>
-                    </graphic>
-                    <padding>
-                        <Insets left="50.0" />
-                    </padding>
-                </Button>
                 <Button fx:id="btnClient" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text=" Clients">
                     <graphic>
                         <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
@@ -124,6 +112,18 @@
                         </ImageView>
                     </graphic>
                 </Button>
+                <Button fx:id="btnUser" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="Users" textFill="#e7e5e5">
+                    <graphic>
+                        <ImageView fitHeight="29.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="@images/staff.png" />
+                            </image>
+                        </ImageView>
+                    </graphic>
+                    <padding>
+                        <Insets left="50.0" />
+                    </padding>
+                </Button>
                 <Button fx:id="btnStatistics" alignment="BASELINE_LEFT" graphicTextGap="22.0" layoutX="10.0" layoutY="468.0" mnemonicParsing="false" onAction="#handleClicks" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text=" Statistics">
                     <padding>
                         <Insets left="50.0" />
@@ -174,7 +174,6 @@
                     <Insets />
                 </StackPane.margin>
             </Pane>
-            <Pane id="User" fx:id="pnlClient" prefHeight="672.0" prefWidth="804.0" />
             <Pane id="Products" fx:id="pnlProducts" prefHeight="672.0" prefWidth="804.0" />
             <Pane id="Manufacture" fx:id="pnlManufactures" prefHeight="672.0" prefWidth="804.0" />
             <Pane id="Warehouse" fx:id="pnlWarehouses" prefHeight="672.0" prefWidth="804.0" />
@@ -182,7 +181,7 @@
             <Pane id="Purchases" fx:id="pnlPurchases" prefHeight="672.0" prefWidth="804.0" />
             <Pane id="Client" fx:id="pnlClient" prefHeight="672.0" prefWidth="804.0" />
             <Pane id="Statistics" fx:id="pnlStatistics" prefHeight="672.0" prefWidth="804.0" />
-            <Pane id="Settings" fx:id="pnlSettings" prefHeight="921.0" prefWidth="1034.0" style="-fx-background-color: D6DBE2;">
+            <Pane id="Settings" fx:id="pnlSettings" prefHeight="921.0" prefWidth="1034.0" style="-fx-background-color: #d2eff9;">
                 <opaqueInsets>
                     <Insets left="200.0" />
                 </opaqueInsets>
