@@ -1,32 +1,26 @@
 package com.walle.UI.model;
 
-import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-import java.util.List;
-
 public class UserTable {
-    private final SimpleIntegerProperty rID;
+    private final SimpleLongProperty rID;
     private final SimpleStringProperty rName;
-    private final SimpleStringProperty rSurname;
     private final SimpleStringProperty rPhone;
     private final SimpleStringProperty rEmail;
-    private final SimpleIntegerProperty rCountry;
     private final SimpleStringProperty rAddress;
-    private final SimpleIntegerProperty rRole;
+    private final SimpleStringProperty rRole;
 
 
 
-    public UserTable(int sID, String sName, String sSurname, String sPhone
-            , String sEmail, Integer sCountry, String sAddress, Integer sRole){
-        this.rID = new SimpleIntegerProperty(sID);
+    public UserTable(Long sID, String sName, String sPhone
+            , String sEmail, String sAddress, String sRole){
+        this.rID = new SimpleLongProperty(sID);
         this.rName = new SimpleStringProperty(sName);
-        this.rSurname = new SimpleStringProperty (sSurname);
         this.rPhone = new SimpleStringProperty (sPhone);
         this.rEmail = new SimpleStringProperty (sEmail);
-        this.rCountry = new SimpleIntegerProperty (sCountry);
         this.rAddress = new SimpleStringProperty (sAddress);
-        this.rRole = new SimpleIntegerProperty (sRole);
+        this.rRole = new SimpleStringProperty (sRole);
 
     }
 
@@ -38,10 +32,6 @@ public class UserTable {
         this.rName.set (rName);
     }
 
-    public void setrSurname(String rSurname) {
-        this.rSurname.set (rSurname);
-    }
-
     public void setrPhone(String rPhone) {
         this.rPhone.set (rPhone);
     }
@@ -50,23 +40,19 @@ public class UserTable {
         this.rEmail.set (rEmail);
     }
 
-    public void setrCountry(int rCountry) {
-        this.rCountry.set (rCountry);
-    }
-
     public void setrAddress(String rAddress) {
         this.rAddress.set (rAddress);
     }
 
-    public void setrRole(int rRole) {
+    public void setrRole(String rRole) {
         this.rRole.set (rRole);
     }
 
-    public int getrID() {
+    public Long getrID() {
         return rID.get ( );
     }
 
-    public SimpleIntegerProperty rIDProperty() {
+    public SimpleLongProperty rIDProperty() {
         return rID;
     }
 
@@ -76,14 +62,6 @@ public class UserTable {
 
     public SimpleStringProperty rNameProperty() {
         return rName;
-    }
-
-    public String getrSurname() {
-        return rSurname.get ( );
-    }
-
-    public SimpleStringProperty rSurnameProperty() {
-        return rSurname;
     }
 
     public String getrPhone() {
@@ -102,14 +80,6 @@ public class UserTable {
         return rEmail;
     }
 
-    public int getrCountry() {
-        return rCountry.get ( );
-    }
-
-    public SimpleIntegerProperty rCountryProperty() {
-        return rCountry;
-    }
-
     public String getrAddress() {
         return rAddress.get ( );
     }
@@ -118,11 +88,11 @@ public class UserTable {
         return rAddress;
     }
 
-    public int getrRole() {
+    public String getrRole() {
         return rRole.get ( );
     }
 
-    public SimpleIntegerProperty rRoleProperty() {
+    public SimpleStringProperty rRoleProperty() {
         return rRole;
     }
 }

@@ -1,35 +1,30 @@
 package com.walle.UI.model;
 
-import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
 public class ProductTable {
     private final SimpleStringProperty rID;
     private final SimpleStringProperty rName;
-    private final SimpleIntegerProperty rQuantity;
-    private final SimpleDoubleProperty rPrice;
-    private final SimpleDoubleProperty rCost;
-    private final SimpleIntegerProperty rManufacture;
-    private final SimpleIntegerProperty rWarehouse;
+    private final SimpleStringProperty rQuantity;
+    private final SimpleStringProperty rPrice;
+    private final SimpleStringProperty rManufacture;
+    private final SimpleStringProperty rWarehouse;
 
-    public ProductTable (String sID, String sName, Integer sQuantity, Double sPrice, Double sCost, Integer sManufacture, Integer sWarehouse){
+    public ProductTable (String sID, String sName, String sQuantity, String sPrice, String sManufacture, String sWarehouse){
         this.rID = new SimpleStringProperty(sID);
         this.rName = new SimpleStringProperty (sName);
-        this.rQuantity= new SimpleIntegerProperty (sQuantity);
-        this.rPrice = new SimpleDoubleProperty (sPrice);
-        this.rCost = new SimpleDoubleProperty (sCost);
-        this.rManufacture = new SimpleIntegerProperty (sManufacture);
-        this.rWarehouse = new SimpleIntegerProperty (sWarehouse);
+        this.rQuantity= new SimpleStringProperty (sQuantity);
+        this.rPrice = new SimpleStringProperty (sPrice);
+        this.rManufacture = new SimpleStringProperty (sManufacture);
+        this.rWarehouse = new SimpleStringProperty (sWarehouse);
     }
 
     public void setrID (String rID)  { this.rID.set (rID); }
     public void setrName (String rName) {this.rName.set (rName);}
-    public void setrQuantity (Integer rQuantity) {this.rQuantity.set (rQuantity);}
-    public void setrPrice (Double rPrice) {this.rPrice.set (rPrice);}
-    public void setrCost (Double rCost) {this.rCost.set (rCost);}
-    public void setrManufacture (Integer rManufacture) {this.rManufacture.set (rManufacture);}
-    public void setrWarehouse (Integer rWarehouse) {this.rWarehouse.set (rWarehouse);}
+    public void setrQuantity (String rQuantity) {this.rQuantity.set (rQuantity);}
+    public void setrPrice (String rPrice) {this.rPrice.set (rPrice);}
+    public void setrManufacture (String rManufacture) {this.rManufacture.set (rManufacture);}
+    public void setrWarehouse (String rWarehouse) {this.rWarehouse.set (rWarehouse);}
 
     public String getrID() {
         return rID.get ( );
@@ -45,43 +40,35 @@ public class ProductTable {
 
     public SimpleStringProperty rNameProperty() { return rName; }
 
-    public Integer getrQuantity() {
+    public String getrQuantity() {
         return rQuantity.get ( );
     }
 
-    public SimpleIntegerProperty rQuantityProperty() {
+    public SimpleStringProperty rQuantityProperty() {
         return rQuantity;
     }
 
-    public double getrPrice() {
+    public String getrPrice() {
         return rPrice.get ( );
     }
 
-    public SimpleDoubleProperty rPriceProperty() {
+    public SimpleStringProperty rPriceProperty() {
         return rPrice;
     }
 
-    public double getrCost() {
-        return rCost.get ( );
-    }
-
-    public SimpleDoubleProperty rCostProperty() {
-        return rCost;
-    }
-
-    public Integer getrManufacture() {
+    public String getrManufacture() {
         return rManufacture.get ( );
     }
 
-    public SimpleIntegerProperty rManufactureProperty() {
+    public SimpleStringProperty rManufactureProperty() {
         return rManufacture;
     }
 
-    public Integer getrWarehouse() {
+    public String getrWarehouse() {
         return rWarehouse.get ( );
     }
 
-    public SimpleIntegerProperty rWarehouseProperty() {
+    public SimpleStringProperty rWarehouseProperty() {
         return rWarehouse;
     }
 }
